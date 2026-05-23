@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 TICKERS = ["RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS", "WIPRO.NS"]
 START_DATE = "2023-01-01"
 END_DATE = datetime.today().strftime("%Y-%m-%d")
-RAW_DIR = "date/raw"
+RAW_DIR = "data/raw"
 
 # --Main ingestion function--
 def ingest_stock_data(tickers, start, end, output_dir):
