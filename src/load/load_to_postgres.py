@@ -41,7 +41,8 @@ def load_enriched_stocks(conn):
     filepath = os.path.join(PROCESSED_DIR, "enriched_stocks.parquet")
     df = pd.read_parquet(filepath)
 
-    # Replace NaN with None so psycopg2 inserts NULL correctly
+    # Drop duplicates and replace NaN with None so psycopg2 inserts NULL correctly
+    df = df.drop_duplicates(subset=['ticker', 'date'], keep="last")
     df = df.where(pd.notnull(df), None)
 
     # Convert date to plain Python data object

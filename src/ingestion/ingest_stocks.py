@@ -26,6 +26,12 @@ RAW_DIR = "data/raw"
 def ingest_stock_data(tickers, start, end, output_dir):
     os.makedirs(output_dir, exist_ok=True)
 
+    # Remove old CSV files before downloading fresh data
+    for old_file in os.listdir(output_dir):
+        if old_file.endswith(".csv"):
+            os.remove(os.path.join(output_dir, old_file))
+    logger.info("Cleared old CSV files from data/raw/")
+
     for ticker in tickers:
         logger.info(f"Starting dowload for {tickers}")
         print(f"Downloading {ticker}...")
