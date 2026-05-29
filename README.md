@@ -4,15 +4,9 @@ A production-grade batch ETL pipeline that ingest real Indian stock market data,
 
 ---
 
-## ARchitecture
+## Architecture
 
-```
-yfinance API
-↓
-[Ingestion] → data/raw/ (CSV) → aws s3 (RAW/)
-↓
-[Load]→ PostgreSQL (enriched_stocks + ticker_summary)
-```
+![Pipeline Architecture](assets/architecture.png)
 
 ---
 
@@ -151,6 +145,14 @@ is granted only `AmazonS3FullAccess` — principle of least privilege.
 **Why separate ingestion, transform, and load scripts?**
 Separation of concerns. Each stage can be tested, debugged, and rerun
 independently without affecting the others.
+
+## What I Would Add With More Time
+- **Apache Airflow DAG** to schedule the pipeline daily
+- **PySpark** transformation layer for larger datasets (Linux/cloud environment)
+- **Tableau / PowerBI Dashboard** connected to PostgreSQL for live visualization
+- **GitHub Actions CI/CD** to run quality checks on every push
+- **Docker** containerisation for reproducable deployment
+
 
 ---
 
