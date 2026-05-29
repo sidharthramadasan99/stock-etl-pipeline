@@ -28,6 +28,11 @@ STAGES = [
         "name":        "Load",
         "script":      "src/load/load_to_postgres.py",
         "description": "Loading transformed data into PostgreSQL"
+    },
+    {
+        "name":        "Quality Checks",
+        "script":      "src/quality/check_data_quality.py",
+        "description": "Validating data integrity in PostgreSQL"
     }
 ]
 
